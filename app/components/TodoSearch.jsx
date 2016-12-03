@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 class TodoSearch extends Component {
   constructor(props) {
     super(props)
+    this.handleSearch = this.handleSearch.bind(this)
   }
   handleSearch() {
     let showCompleted = this.refs.showCompleted.checked
