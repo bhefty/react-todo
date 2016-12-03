@@ -5,10 +5,13 @@ class Todo extends Component {
     super(props)
   }
   render() {
-    let { id, text } = this.props
+    let { id, completed, text } = this.props
     return (
-      <div>
-        {id}. {text}
+      <div onClick={() => {
+        this.props.onToggle(id)
+      }}>
+        <input type='checkbox' checked={completed}/>
+        {text}
       </div>
     )
   }
