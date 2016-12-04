@@ -47,6 +47,11 @@ export let todosReducer = (state = [], action) => {
         }
       })
     this.setState({todos: updatedTodos})
+    case 'ADD_TODOS':
+      return [
+        ...state,
+        ...action.todos
+      ]
     default:
       return state
   }
