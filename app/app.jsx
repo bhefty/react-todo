@@ -10,6 +10,7 @@ let actions = require('actions')
 let store = require('configureStore').configure()
 
 
+
 store.subscribe(() => {
   let state = store.getState()
   console.log('New state', state)
