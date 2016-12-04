@@ -4,6 +4,17 @@ import { Route, Router, IndexRoute, hashHistory } from 'react-router'
 
 import TodoApp from 'TodoApp'
 
+let actions = require('actions')
+let store = require('configureStore').configure()
+
+store.subscribe(() => {
+  console.log('New state', store.getState())
+})
+
+store.dispatch(actions.addTodo('Clean the yeard'))
+store.dispatch(actions.setSearchText('yard'))
+store.dispatch(actions.toggleShowCompleted())
+
 // Load foundation-sites
 $(document).foundation()
 
