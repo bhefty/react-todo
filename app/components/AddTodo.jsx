@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+let actions = require('actions')
 
-class AddTodo extends Component {
+export class AddTodo extends Component {
   constructor(props) {
     super(props)
     this.onSubmit = this.onSubmit.bind(this)
   }
   onSubmit(e) {
     e.preventDefault()
+    let { dispatch } = this.props
+    let todoText = this.refs.todoText.value
 
-    let todo = this.refs.todo.value
-
-    if (todo.length > 0) {
-      this.refs.todo.value = ''
-      this.props.onAddTodo(todo)
+    if (todoText.length > 0) {
+      this.refs.todoText.value = ''
+      dispatch(actions.addTodo(todoText))
     } else {
-      this.refs.todo.focus()
+      this.refs.todoText.focus()
     }
   }
   render() {
     return(
       <div className='container__footer'>
         <form ref='form' onSubmit={this.onSubmit}>
-          <input type='text' ref='todo' placeholder='Enter a todo item'/>
+          <input type='text' ref='todoText' placeholder='Enter a todo item'/>
           <button className='button expanded'>Add Todo</button>
         </form>
       </div>
@@ -29,4 +31,4 @@ class AddTodo extends Component {
   }
 }
 
-export default AddTodo
+export default connect()(AddTodo)
